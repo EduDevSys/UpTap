@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Error 404 · Retos y desafíos de la tecnología frente a los derechos digitales</title>
+<meta name="description" content="Recursos de la conferencia magistral Error 404 de Carlos Eduardo Velázquez Ramírez: leyes, casos y fuentes organizados por reto.">
+<meta name="theme-color" content="#0B0F1A">
+<style>
+:root{
+  --bg:#0B0F1A;--panel:#121827;--panel2:#060910;--line:#26314A;--text:#E8ECF4;--muted:#9AA4B8;
+  --green:#00FF9C;--red:#FF3B5C;--blue:#3DA9FC;--yellow:#FFC83D;--purple:#B57BFF;--orange:#FF8A3D;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:16px;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono)}
+/* fondo de código */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 2px,transparent 2px 4px),
+   radial-gradient(1200px 600px at 85% -10%,rgba(0,255,156,.10),transparent 60%),
+   radial-gradient(900px 500px at -10% 110%,rgba(61,169,252,.10),transparent 60%),
+   var(--bg)}
+/* barra superior */
+header.top{position:sticky;top:0;z-index:20;background:rgba(11,15,26,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.logos{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.logos .ad{height:40px;width:auto}
+.logos .sa{height:20px;width:auto;opacity:.75}
+nav.retos{display:flex;gap:6px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav.retos::-webkit-scrollbar{display:none}
+nav.retos a{font-family:var(--mono);font-size:12px;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;transition:.25s}
+nav.retos a:hover,nav.retos a.on{color:var(--bg);background:var(--c);border-color:var(--c)}
+#progreso{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--green),var(--blue),var(--yellow),var(--purple),var(--orange))}
+/* hero */
+.hero{min-height:calc(100vh - 64px);display:flex;align-items:center;padding:48px 0}
+.prompt{font-family:var(--mono);color:var(--muted);font-size:14px}
+.prompt::after{content:"▌";color:var(--green);animation:blink 1s steps(1) infinite;margin-left:4px}
+.h404{font-family:var(--mono);font-weight:800;line-height:.9;margin:14px 0 18px;font-size:clamp(84px,22vw,220px);color:var(--green);position:relative;display:inline-block;letter-spacing:-4px}
+.h404 small{display:block;font-size:.22em;color:var(--text);letter-spacing:0;margin-bottom:8px}
+.h404 .g{position:relative}
+.h404 .g::before,.h404 .g::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden}
+.h404 .g::before{color:var(--red);transform:translate(3px,2px);opacity:.35;clip-path:inset(0 0 55% 0);animation:gl1 3.2s infinite}
+.h404 .g::after{color:var(--blue);transform:translate(-3px,-2px);opacity:.3;clip-path:inset(60% 0 0 0);animation:gl2 2.7s infinite}
+.hero h1{font-size:clamp(22px,3.4vw,34px);font-weight:700;max-width:760px;line-height:1.25}
+.hero .who{margin-top:22px;font-family:var(--mono);color:var(--green);font-weight:700}
+.hero .ev{color:var(--muted);margin-top:6px;font-size:15px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;text-decoration:none;padding:12px 18px;border-radius:12px;border:1px solid var(--green);color:var(--green);background:rgba(0,255,156,.06);transition:.25s}
+.btn:hover{background:var(--green);color:var(--bg);transform:translateY(-2px)}
+.btn.alt{border-color:var(--line);color:var(--text);background:var(--panel)}
+.btn.alt:hover{border-color:var(--blue);background:var(--blue);color:var(--bg)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+/* secciones */
+section.s{padding:72px 0;border-top:1px solid var(--line)}
+.tag{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--red);letter-spacing:.5px}
+h2{font-family:var(--mono);font-size:clamp(26px,4vw,40px);line-height:1.15;margin:8px 0 14px}
+h3{font-size:19px;margin:0 0 8px}
+p.lead{font-size:18px;color:#CDD3DF;max-width:780px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;transition:.3s}
+.card:hover{border-color:var(--c,var(--green));transform:translateY(-3px)}
+.card .k{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.big{font-family:var(--mono);font-weight:800;font-size:clamp(44px,9vw,84px);line-height:1;color:var(--c,var(--green))}
+.quote{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:18px 20px 18px 54px;position:relative;margin:12px 0}
+.quote::before{content:"\201C";position:absolute;left:16px;top:2px;font:800 54px/1 var(--mono);color:var(--c,var(--green))}
+.quote .ley{display:block;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px}
+.quote mark{background:none;color:var(--c,var(--green));font-weight:700}
+.remate{font-family:var(--mono);font-weight:800;font-size:clamp(20px,3vw,28px);margin:18px 0;line-height:1.25}
+.note{font-size:13px;color:var(--muted);font-style:italic}
+ul.list{list-style:none;display:grid;gap:10px}
+ul.list li{padding-left:28px;position:relative}
+ul.list li::before{content:"▸";position:absolute;left:6px;color:var(--c,var(--green))}
+.q{border-left:0;background:linear-gradient(90deg,rgba(255,59,92,.08),transparent);border:1px solid rgba(255,59,92,.35);border-radius:14px;padding:18px 20px;margin:16px 0}
+.q .tag{display:block;margin-bottom:6px}
+.q p{font-size:clamp(19px,2.6vw,24px);font-weight:700}
+/* retos */
+.reto{--c:var(--green)}
+.reto-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.pill{font-family:var(--mono);font-weight:800;font-size:14px;color:var(--bg);background:var(--c);padding:6px 14px;border-radius:999px}
+.tracker{display:flex;gap:5px;margin-left:auto}
+.tracker span{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);display:grid;place-items:center;font:700 12px var(--mono);color:var(--muted)}
+.tracker span.on{background:var(--c);border-color:var(--c);color:var(--bg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+.chip{font-size:12px;border:1px solid var(--c);color:var(--c);padding:4px 10px;border-radius:999px}
+.carrera{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:16px}
+.carrera .card h3{font-family:var(--mono);font-size:14px;letter-spacing:1px}
+.carrera .ap h3{color:var(--green)} .carrera .pr h3{color:var(--blue)}
+.carrera .ap li::before{content:"✓";color:var(--green)} .carrera .pr li::before{content:"📖";font-size:12px}
+details.fuentes{margin-top:18px;background:var(--panel2);border:1px solid var(--line);border-radius:12px}
+details.fuentes summary{cursor:pointer;padding:14px 18px;font-family:var(--mono);font-weight:700;font-size:14px;color:var(--c,var(--green));list-style:none}
+details.fuentes summary::-webkit-details-marker{display:none}
+details.fuentes summary::before{content:"+ ";}
+details.fuentes[open] summary::before{content:"− ";}
+details.fuentes ul{list-style:none;padding:0 18px 16px;display:grid;gap:8px}
+details.fuentes a{color:var(--text);text-decoration:none;border-bottom:1px dashed var(--line)}
+details.fuentes a:hover{color:var(--c,var(--green));border-color:var(--c,var(--green))}
+details.fuentes small{color:var(--muted)}
+.pais{display:grid;grid-template-columns:150px 1fr;gap:6px 16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.pais b{font-family:var(--mono)}
+@media (max-width:560px){.pais{grid-template-columns:1fr}.tracker{margin-left:0}}
+.mapa a{display:flex;align-items:center;gap:14px;text-decoration:none;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel);transition:.25s}
+.mapa a:hover{border-color:var(--c);transform:translateX(4px)}
+.mapa .pill{flex-shrink:0}
+.mapa span.car{margin-left:auto;font-size:12px;color:var(--c);text-align:right}
+@media (max-width:560px){.mapa a{flex-wrap:wrap}.mapa span.car{margin-left:0;text-align:left}}
+.dec{counter-reset:d;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.dec li{list-style:none;counter-increment:d;display:flex;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.dec li::before{content:counter(d,decimal-leading-zero);font:800 22px var(--mono);color:var(--green)}
+.dec li:last-child::before,.dec li:last-child{color:var(--red)}
+.keys{display:flex;align-items:center;justify-content:center;gap:14px;margin:10px 0 20px}
+.key{font:800 34px var(--mono);padding:14px 24px;border:2px solid var(--green);border-radius:14px;background:var(--panel)}
+.key.z{position:relative}
+.key.z::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:4px;background:var(--red);transform:rotate(-38deg)}
+.center{text-align:center}
+.contacto{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:20px}
+.contacto a{display:flex;align-items:center;gap:16px;text-decoration:none;padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--panel);transition:.25s}
+.contacto a:hover{transform:translateY(-3px)}
+.contacto a.wa:hover{border-color:#25D366}
+.contacto a.ml:hover{border-color:var(--blue)}
+.contacto .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.contacto .wa .ic{background:#25D366}.contacto .ml .ic{background:var(--blue)}
+.contacto .ic svg{width:26px;height:26px;fill:#0B0F1A}
+.contacto b{display:block;font-family:var(--mono);font-size:18px}
+.contacto small{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:32px 0 96px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between}
+footer .logos .ad{height:46px}
+/* boton flotante whatsapp */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:30;display:flex;align-items:center;gap:10px;text-decoration:none;
+  background:#25D366;color:#0B0F1A;border-radius:999px;padding:12px 18px 12px 14px;font:700 14px var(--mono);
+  box-shadow:0 8px 24px rgba(37,211,102,.35);animation:waBounce 2.6s ease-in-out infinite}
+.wa-float svg{width:26px;height:26px;fill:#0B0F1A}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #25D366;animation:waPulse 2.6s ease-out infinite;pointer-events:none}
+.wa-float:hover{animation-play-state:paused;transform:scale(1.06)}
+@keyframes waBounce{0%,60%,100%{transform:translateY(0)}70%{transform:translateY(-10px)}80%{transform:translateY(0)}88%{transform:translateY(-5px)}}
+@keyframes waPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.45);opacity:0}}
+@media (max-width:560px){.wa-float span{display:none}.wa-float{padding:14px;right:14px;bottom:14px}}
+/* animaciones */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@keyframes blink{50%{opacity:0}}
+@keyframes gl1{0%,88%,100%{transform:translate(4px,2px)}90%{transform:translate(-6px,1px)}94%{transform:translate(6px,-2px)}}
+@keyframes gl2{0%,84%,100%{transform:translate(-4px,-2px)}86%{transform:translate(6px,2px)}92%{transform:translate(-6px,1px)}}
+@keyframes scan{from{transform:translateY(-100%)}to{transform:translateY(100vh)}}
+.scanline{position:fixed;left:0;right:0;height:80px;top:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(0,255,156,.05),transparent);animation:scan 7s linear infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (max-width:700px){.logos .sa{display:none}.logos .ad{height:34px}section.s{padding:56px 0}}
+</style>
+</head>
+<body>
+<div class="scanline" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logos" href="#inicio" aria-label="Inicio">
+      <img class="ad" src="data:image/png;base64,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" alt="Agencia Digital Tecnológica del Estado de Chiapas">
+      <img class="sa" src="data:image/png;base64,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" alt="SATA, Semillero de Apps y Tecnología de la ADITECH">
+    </a>
+    <nav class="retos" aria-label="Retos">
+      <a href="#contexto" style="--c:var(--red)">Contexto</a>
+      <a href="#reto1" style="--c:var(--green)">01</a>
+      <a href="#reto2" style="--c:var(--blue)">02</a>
+      <a href="#reto3" style="--c:var(--yellow)">03</a>
+      <a href="#reto4" style="--c:var(--purple)">04</a>
+      <a href="#reto5" style="--c:var(--orange)">05</a>
+      <a href="#contacto" style="--c:var(--green)">Contacto</a>
+    </nav>
+  </div>
+  <div id="progreso"></div>
+</header>
+
+<main id="inicio">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="prompt">&gt; conferencia_magistral.exe</p>
+    <div class="h404"><small>Error</small><span class="g" data-t="404">404</span></div>
+    <h1>Retos y desafíos de la tecnología frente a los derechos digitales</h1>
+    <p class="who">Carlos Eduardo Velázquez Ramírez</p>
+    <p class="ev">Simposio Mesoamericano de Ciencia, Tecnología e Innovación para la Transformación Social 2026 · XV Aniversario de la Universidad Politécnica de Tapachula</p>
+    <div class="cta">
+      <a class="btn" href="#mapa">Ver los 5 retos ↓</a>
+      <a class="btn alt" href="#contacto">Contacto</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXTO -->
+<section class="s" id="contexto">
+  <div class="wrap">
+    <span class="tag rv">CONTEXTO //</span>
+    <h2 class="rv">La tecnología corre, la ley camina</h2>
+    <p class="lead rv">Si para tu proyecto entrenas una IA con la voz o la cara de un compañero, ¿necesitas su permiso? Esto es lo que dice hoy la ley mexicana.</p>
+
+    <div class="grid g2" style="margin-top:24px">
+      <div class="card rv" style="--c:var(--red)">
+        <div class="big">4 de 238</div>
+        <p style="margin-top:8px"><b>artículos de la Ley Federal del Derecho de Autor hablan de inteligencia artificial</b> (arts. 87, 102, 118 y 121, reforma DOF 14-05-2026).</p>
+      </div>
+      <div class="card rv" style="--c:var(--red)">
+        <div class="big">0</div>
+        <p style="margin-top:8px"><b>leyes generales de inteligencia artificial en México.</b> Mientras tanto, los tribunales deciden caso por caso.</p>
+      </div>
+    </div>
+
+    <div class="quote rv"><span class="ley">Ley Federal del Derecho de Autor, art. 87</span>
+      La imagen, incluida la voz, de las <mark>personas artistas intérpretes o ejecutantes</mark> (…) sólo puede ser usada o publicada, con su <mark>consentimiento expreso</mark> (…). La protección (…) abarca los resultados generados por <mark>sistemas de inteligencia artificial</mark>…</div>
+    <p class="remate rv">Si tu compañero canta, actúa o narra, la ley exige su consentimiento expreso. <span style="color:var(--green)">Si no, esta ley no lo menciona… pero pídelo siempre.</span></p>
+    <p class="note rv">Art. 116: artista intérprete o ejecutante es el actor, narrador, declamador, locutor, actor de doblaje, cantante, músico, bailarín “o cualquiera otra persona que interprete o ejecute una obra literaria o artística”. No incluye a extras ni participaciones eventuales.</p>
+
+    <h3 class="rv" style="margin-top:36px">¿Y en otros países?</h3>
+    <div class="rv">
+      <div class="pais"><b style="color:var(--green)">Unión Europea</b><span><b>Ley de IA (Reglamento 2024/1689).</b> Vigente desde agosto de 2024; se aplica por etapas hasta 2027. Clasifica la IA por niveles de riesgo.</span></div>
+      <div class="pais"><b style="color:var(--green)">Italia</b><span><b>Ley 132/2025.</b> Primera ley nacional de IA en la Unión Europea, vigente desde octubre de 2025.</span></div>
+      <div class="pais"><b style="color:var(--green)">Corea del Sur</b><span><b>Ley Básica de IA.</b> Vigente desde enero de 2026: etiquetar deepfakes y supervisión humana en sectores sensibles.</span></div>
+      <div class="pais"><b style="color:var(--yellow)">Japón</b><span><b>Ley de Promoción de la IA.</b> Aprobada en mayo de 2025: impulsa el desarrollo, sin multas.</span></div>
+      <div class="pais"><b style="color:var(--red)">México</b><span><b>Sin ley general.</b> Iniciativas en el Congreso y reglas por sector.</span></div>
+    </div>
+
+    <h3 class="rv" style="margin-top:36px">Lo que sí existe: un juez puede usar IA… con 4 reglas</h3>
+    <p class="note rv" style="margin-bottom:12px">Jurisprudencia: un criterio que los tribunales repiten y que se vuelve obligatorio para otros jueces.</p>
+    <div class="grid g2 rv">
+      <div class="card"><b class="mono" style="color:var(--green)">1 · Proporcionalidad e inocuidad</b><br><span style="color:var(--muted)">Solo para lo necesario, como cálculos.</span></div>
+      <div class="card"><b class="mono" style="color:var(--green)">2 · Proteger los datos</b><br><span style="color:var(--muted)">Del expediente.</span></div>
+      <div class="card"><b class="mono" style="color:var(--green)">3 · Avisar y explicar</b><br><span style="color:var(--muted)">A las partes, cómo se usó.</span></div>
+      <div class="card"><b class="mono" style="color:var(--green)">4 · La IA es auxiliar</b><br><span style="color:var(--muted)">Decide la persona juzgadora.</span></div>
+    </div>
+    <p class="note rv" style="margin-top:10px">Jurisprudencia II.2o.C. J/2 K (12a.), registro digital 2031640, Segundo Tribunal Colegiado en Materia Civil del Segundo Circuito, publicada el 9 de enero de 2026.</p>
+
+    <details class="fuentes rv"><summary>Fuentes del contexto</summary><ul>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFDA.pdf" target="_blank" rel="noopener">Ley Federal del Derecho de Autor (texto vigente)</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio//ref/lfda/LFDA_ref16_14may26.pdf" target="_blank" rel="noopener">Reforma a la LFDA, DOF 14-05-2026</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://egaceta.scjn.gob.mx/detalle/tesis/2031640" target="_blank" rel="noopener">Jurisprudencia II.2o.C. J/2 K (12a.), registro 2031640</a> <small>· Gaceta del SJF</small></li>
+      <li><a href="https://www.itsitio.com/mx/inteligencia-artificial/regulacion-de-ia-en-mexico-todavia-no-hay-una-ley-general-pero-las-reglas-ya-avanzan-por-sectores/" target="_blank" rel="noopener">Regulación de IA en México: todavía no hay ley general</a> <small>· ITSitio</small></li>
+      <li><a href="https://www.aoshearman.com/en/insights/ao-shearman-on-data/ai-act-published-in-eu-official-journal-to-enter-into-force-on-1-august-2024" target="_blank" rel="noopener">Ley de IA de la UE, en vigor el 1 de agosto de 2024</a> <small>· A&amp;O Shearman</small></li>
+      <li><a href="https://www.squirepattonboggs.com/en/insights/publications/2025/10/italian-law-no-132-2025-the-first-domestic-law-in-the-european-union-on-the-use-of-artificial-intelligence" target="_blank" rel="noopener">Italia, Ley 132/2025</a> <small>· Squire Patton Boggs</small></li>
+      <li><a href="https://www.elcomercio.com/tendencias/inteligencia-artificial-corea-ley-regulacion/" target="_blank" rel="noopener">Corea del Sur, Ley Básica de IA</a> <small>· El Comercio</small></li>
+      <li><a href="https://www.whitecase.com/insight-alert/japans-first-ai-legislation-becomes-law-focus-promoting-research-and-development-no" target="_blank" rel="noopener">Japón, Ley de Promoción de la IA</a> <small>· White &amp; Case</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section class="s" id="mapa">
+  <div class="wrap">
+    <span class="tag rv">MAPA //</span>
+    <h2 class="rv">5 retos para ingenieros</h2>
+    <div class="grid mapa" style="margin-top:20px">
+      <a class="rv" href="#reto1" style="--c:var(--green)"><span class="pill">01</span><b>Tu cara y tu voz</b><span class="car">Animación · TI</span></a>
+      <a class="rv" href="#reto2" style="--c:var(--blue)"><span class="pill">02</span><b>¿De quién es lo que crea la IA?</b><span class="car">Animación · TI</span></a>
+      <a class="rv" href="#reto3" style="--c:var(--yellow)"><span class="pill">03</span><b>¿La IA puede decidir?</b><span class="car">Financiera · TI</span></a>
+      <a class="rv" href="#reto4" style="--c:var(--purple)"><span class="pill">04</span><b>Tu identidad en una base de datos</b><span class="car">TI · Logística · Financiera</span></a>
+      <a class="rv" href="#reto5" style="--c:var(--orange)"><span class="pill">05</span><b>Hackear lo físico</b><span class="car">Mecatrónica · Automotrices · Energía · Alimentos · Logística</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RETO 1 -->
+<section class="s reto" id="reto1" style="--c:var(--green)">
+  <div class="wrap">
+    <div class="reto-head rv"><span class="pill">RETO 01</span><h2 style="margin:0">Tu cara y tu voz</h2>
+      <div class="tracker"><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+    <div class="chips rv"><span class="chip">Animación y Efectos Visuales</span><span class="chip">TI</span></div>
+    <div class="q rv"><span class="tag">PREGUNTA //</span><p>Si tu proyecto puede crear la cara o la voz de alguien, ¿qué te toca cuidar a ti?</p></div>
+
+    <div class="grid g2">
+      <div class="card rv" style="--c:var(--red)"><div class="big">96%</div><p>de los videos deepfake en internet eran contenido íntimo sin consentimiento <small style="color:var(--muted)">(Deeptrace, 2019)</small>.</p><p class="mono" style="color:var(--green);margin-top:8px;font-weight:700">El problema no es la herramienta. Es cómo se usa.</p></div>
+      <div class="card rv"><span class="k">Así nació la ley</span><h3 style="margin-top:6px">Ley Olimpia</h3><p>Un video compartido sin permiso cambió las leyes de todo un país. El documental <i>Llamarse Olimpia</i> cuenta la historia de Olimpia Coral Melo.</p></div>
+    </div>
+
+    <div class="quote rv"><span class="ley">Código Penal Federal, art. 199 Octies (Ley Olimpia)</span>
+      Así como quien videograbe, audiograbe, fotografíe, imprima o <mark>elabore</mark>, imágenes, audios o videos con contenido íntimo sexual de una persona <mark>sin su consentimiento</mark>… Estas conductas se sancionarán con una pena de <mark>tres a seis años de prisión</mark>…</div>
+    <p class="remate rv">Generarlo con IA también cuenta.</p>
+
+    <div class="grid g2">
+      <div class="card rv" style="--c:var(--red)"><span class="k">Chiapas · Código Penal, art. 343 Bis</span><div class="big" style="font-size:40px;margin:8px 0">3 a 5 años</div><p>por publicar, difundir o compartir contenido íntimo sin consentimiento; 4 a 6 si hubo relación de confianza. <b>Castiga difundir, no elaborar.</b></p></div>
+      <div class="card rv" style="--c:var(--red)"><span class="k">Estados Unidos · TAKE IT DOWN Act (2025)</span><div class="big" style="font-size:40px;margin:8px 0">48 horas</div><p>para que las plataformas retiren imágenes íntimas sin consentimiento, incluidos los deepfakes.</p></div>
+    </div>
+
+    <h3 class="rv" style="margin-top:32px;color:var(--c)" >PARA TU CARRERA //</h3>
+    <div class="carrera">
+      <div class="card ap rv"><h3>APLÍCALO</h3><ul class="list">
+        <li>Pide consentimiento por escrito y guárdalo.</li>
+        <li>Etiqueta lo que genera la IA (marca de agua o aviso).</li>
+        <li>Pon límites de diseño contra usos dañinos.</li>
+        <li>Protege voces y rostros como datos personales.</li></ul></div>
+      <div class="card pr rv"><h3>PROFUNDIZA EN</h3><ul class="list">
+        <li>Procedencia de contenido (C2PA) y marcas de agua</li>
+        <li>Detección de deepfakes</li>
+        <li>Ley Olimpia y violencia digital</li></ul></div>
+    </div>
+    <p class="rv" style="margin-top:14px"><b style="color:var(--red)">Y si te pasa a ti:</b> guarda evidencia, repórtalo a la plataforma y denuncia ante la Fiscalía o al 089 (denuncia anónima). Busca acompañamiento, como la Red de Defensoras Digitales.</p>
+
+    <details class="fuentes rv"><summary>Fuentes del Reto 01</summary><ul>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CPF.pdf" target="_blank" rel="noopener">Código Penal Federal, art. 199 Octies</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://consejeriajuridica.chiapas.gob.mx/Marco_Juridico/Leyes/pdf/CODIGO%20PENAL%20PARA%20EL%20ESTADO%20DE%20CHIAPAS.pdf" target="_blank" rel="noopener">Código Penal para el Estado de Chiapas, art. 343 Bis (última reforma P.O. 27/11/2024)</a> <small>· Consejería Jurídica de Chiapas</small></li>
+      <li><a href="https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/president-trump-signs-take-it-down-act-into-law" target="_blank" rel="noopener">TAKE IT DOWN Act</a> <small>· Akin Gump</small></li>
+      <li><a href="https://thenextweb.com/news/a-new-study-says-nearly-96-of-deepfake-videos-are-porn" target="_blank" rel="noopener">Deeptrace, The State of Deepfakes (2019)</a> <small>· The Next Web</small></li>
+      <li><a href="https://www.chilango.com/cine-y-tv/peliculas/llamarse-olimpia-documental-llega-a-cines-cdmx-la-mujer-detras-de-la-ley-olimpia/" target="_blank" rel="noopener">Documental “Llamarse Olimpia”</a> <small>· Chilango</small></li>
+      <li><a href="https://grupoanimal.mx/sociedad/ley-olimpia-red-defensoras-digitales-oaxaca" target="_blank" rel="noopener">Red de Defensoras Digitales</a> <small>· Grupo Animal</small></li>
+      <li><a href="https://www.unotv.com/nacional/si-presencias-un-delito-y-quieres-denunciar-marca-este-numero-es-anonimo/" target="_blank" rel="noopener">089, denuncia anónima</a> <small>· Uno TV</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- RETO 2 -->
+<section class="s reto" id="reto2" style="--c:var(--blue)">
+  <div class="wrap">
+    <div class="reto-head rv"><span class="pill">RETO 02</span><h2 style="margin:0">¿De quién es lo que crea la IA?</h2>
+      <div class="tracker"><span>1</span><span class="on">2</span><span>3</span><span>4</span><span>5</span></div></div>
+    <div class="chips rv"><span class="chip">Animación y Efectos Visuales</span><span class="chip">TI</span></div>
+    <div class="q rv"><span class="tag">PREGUNTA //</span><p>Si usas IA en tu proyecto final, ¿de quién es la obra?</p></div>
+
+    <div class="quote rv"><span class="ley">Ley Federal del Derecho de Autor, art. 12</span>Autor es la <mark>persona física</mark> que ha creado una obra literaria y artística.</div>
+    <p class="remate rv">Si lo hizo solo la IA, no es tuyo.</p>
+    <div class="quote rv"><span class="ley">Ley Federal del Derecho de Autor, art. 102</span>Los programas de computación, <mark>incluidos los de inteligencia artificial</mark>, se protegen en los mismos términos que las obras literarias.</div>
+    <p class="remate rv">Lo que la IA genera no es de nadie. <span style="color:var(--c)">El código que tú escribes, sí es tuyo.</span></p>
+    <p class="note rv">Ejemplo: el logotipo que genera tu app con IA no tiene autor; el código de tu app, sí.</p>
+
+    <h3 class="rv" style="margin-top:28px">Los tribunales ya lo resolvieron</h3>
+    <div class="grid g2">
+      <div class="card rv"><span class="k">México · agosto de 2025</span><h3 style="margin-top:6px">SCJN, Segunda Sala, amparo directo 6/2025</h3><p>Negó registrar el “Avatar Virtual” hecho con IA: solo las personas físicas pueden ser autoras.</p></div>
+      <div class="card rv"><span class="k">Estados Unidos · 2025</span><h3 style="margin-top:6px">Thaler v. Perlmutter, Corte de Apelaciones de D.C.</h3><p>Sin autor humano, no hay derechos de autor.</p></div>
+    </div>
+
+    <div class="card rv" style="margin-top:16px"><span class="k">¿Y si yo escribí el prompt?</span>
+      <p class="remate" style="margin:8px 0">Un prompt es una instrucción, no una obra.</p>
+      <ul class="list">
+        <li><b>México:</b> en el caso “Avatar Virtual”, el solicitante dio fotografías propias e instrucciones a la IA. La Corte negó el registro: la IA generó el contenido.</li>
+        <li><b>EE. UU.:</b> la Oficina de Derechos de Autor (enero de 2025) concluyó que los prompts por sí solos no bastan para ser autor.</li>
+        <li><b style="color:var(--c)">Lo que sí cuenta:</b> lo que tú modificas, seleccionas y combinas con tu creatividad. Documéntalo.</li>
+      </ul></div>
+
+    <h3 class="rv" style="margin-top:32px;color:var(--c)">PARA TU CARRERA //</h3>
+    <div class="carrera">
+      <div class="card ap rv"><h3>APLÍCALO</h3><ul class="list">
+        <li>Documenta tu proceso: versiones, bocetos y cambios.</li>
+        <li>Lee los términos de uso de la herramienta de IA antes de usarla en un proyecto comercial.</li>
+        <li>Registra tu software ante INDAUTOR.</li>
+        <li>Antes de firmar un contrato, pregunta de quién será el código.</li></ul></div>
+      <div class="card pr rv"><h3>PROFUNDIZA EN</h3><ul class="list">
+        <li>Derechos de autor del software</li>
+        <li>Licencias de código abierto (MIT, GPL)</li>
+        <li>Propiedad intelectual y contratos tecnológicos</li></ul></div>
+    </div>
+
+    <details class="fuentes rv"><summary>Fuentes del Reto 02</summary><ul>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFDA.pdf" target="_blank" rel="noopener">Ley Federal del Derecho de Autor, arts. 12 y 102</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://bj.scjn.gob.mx/documento/sentencias_pub/233157" target="_blank" rel="noopener">SCJN, amparo directo 6/2025 (“Avatar Virtual”)</a> <small>· Buscador Jurídico SCJN</small></li>
+      <li><a href="https://www.scjn.gob.mx/sites/default/files/listas/documento_dos/2025-06/AD%206-2025.pdf" target="_blank" rel="noopener">Proyecto de resolución AD 6/2025</a> <small>· SCJN</small></li>
+      <li><a href="https://www.skadden.com/insights/publications/2025/03/appellate-court-affirms-human-authorship" target="_blank" rel="noopener">Thaler v. Perlmutter (2025)</a> <small>· Skadden</small></li>
+      <li><a href="https://ipwatchdog.com/2025/01/29/part-two-copyright-office-ai-report-says-creative-prompting-doesnt-constitute-authorship/" target="_blank" rel="noopener">U.S. Copyright Office: los prompts no constituyen autoría (2025)</a> <small>· IPWatchdog</small></li>
+      <li><a href="https://emprendedor.com/registro-de-derechos-de-autor-ante-el-indautor-guia-paso-a-paso/" target="_blank" rel="noopener">Registro de derechos de autor ante INDAUTOR</a> <small>· Emprendedor</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- RETO 3 -->
+<section class="s reto" id="reto3" style="--c:var(--yellow)">
+  <div class="wrap">
+    <div class="reto-head rv"><span class="pill">RETO 03</span><h2 style="margin:0">¿La IA puede decidir?</h2>
+      <div class="tracker"><span>1</span><span>2</span><span class="on">3</span><span>4</span><span>5</span></div></div>
+    <div class="chips rv"><span class="chip">Ingeniería Financiera</span><span class="chip">TI</span></div>
+    <p class="remate rv">La IA asiste. La persona decide.</p>
+
+    <div class="grid g3">
+      <div class="card rv" style="--c:var(--green)"><span class="k" style="color:var(--green)">● Querétaro</span><p style="margin-top:6px">El Poder Judicial usa SonIA, su propia IA, con supervisión humana.</p></div>
+      <div class="card rv" style="--c:var(--yellow)"><span class="k" style="color:var(--yellow)">● Zacatecas</span><p style="margin-top:6px">Jueza suspendida, señalada de usar IA para redactar resoluciones.</p></div>
+      <div class="card rv" style="--c:var(--red)"><span class="k" style="color:var(--red)">● Nueva York</span><p style="margin-top:6px">Abogados sancionados por citar casos inventados por ChatGPT (Mata v. Avianca).</p></div>
+    </div>
+
+    <div class="card rv" style="margin-top:16px;--c:var(--red)"><div class="big">25 MDD</div><p><b>≈ 470 millones de pesos.</b> Hong Kong, 2024: un empleado de Arup transfirió el dinero tras una videollamada en la que todos los directivos eran deepfakes.</p></div>
+    <div class="q rv"><span class="tag">PREGUNTA //</span><p>Si tu jefe te pide por videollamada una transferencia urgente, ¿cómo sabrías que es real?</p></div>
+
+    <h3 class="rv" style="margin-top:28px">Dos miradas</h3>
+    <div class="grid g2">
+      <div class="card rv" style="--c:var(--green)"><span class="k" style="color:var(--green)">A favor</span><ul class="list" style="margin-top:8px"><li>Procesa miles de casos en minutos.</li><li>Reduce el rezago, como en los juzgados.</li><li>Aplica criterios de forma uniforme.</li></ul></div>
+      <div class="card rv" style="--c:var(--red)"><span class="k" style="color:var(--red)">Con cautela</span><ul class="list" style="margin-top:8px"><li>Puede inventar datos (Nueva York).</li><li>Reproduce los sesgos de sus datos.</li><li>No siempre explica cómo decidió, y no responde ante la ley.</li></ul></div>
+    </div>
+    <p class="remate rv">La pregunta no es si usar IA, sino <span style="color:var(--c)">quién revisa y quién responde.</span></p>
+
+    <h3 class="rv" style="margin-top:32px;color:var(--c)">PARA TU CARRERA //</h3>
+    <div class="carrera">
+      <div class="card ap rv"><h3>APLÍCALO</h3><ul class="list">
+        <li>Diseña con una persona que revise las decisiones importantes.</li>
+        <li>Verifica todo lo que te entregue la IA (citas, datos, código).</li>
+        <li>Deja registro de cómo decide tu sistema.</li>
+        <li>Para pagos o datos sensibles, confirma por un segundo canal.</li></ul></div>
+      <div class="card pr rv"><h3>PROFUNDIZA EN</h3><ul class="list">
+        <li>IA explicable</li><li>Sesgos en algoritmos</li><li>Ley de IA de la UE: sistemas de alto riesgo</li><li>La jurisprudencia de las 4 reglas</li></ul></div>
+    </div>
+
+    <details class="fuentes rv"><summary>Fuentes del Reto 03</summary><ul>
+      <li><a href="https://www.poderjudicialqro.gob.mx/noticias/despliegaBol.php?id=56581" target="_blank" rel="noopener">Querétaro, primeras sentencias con apoyo de IA (SonIA)</a> <small>· Poder Judicial de Querétaro</small></li>
+      <li><a href="https://www.xataka.com.mx/robotica-e-ia/ia-llego-a-juzgados-mexico-no-como-muchos-imaginaban-jueza-usaba-para-sentencias-termino-suspendida" target="_blank" rel="noopener">Zacatecas, jueza suspendida</a> <small>· Xataka México</small></li>
+      <li><a href="https://www.nbcnews.com/tech/tech-news/chatgpt-cited-bogus-cases-new-york-federal-court-filing-rcna86843" target="_blank" rel="noopener">Mata v. Avianca, casos falsos de ChatGPT</a> <small>· NBC News</small></li>
+      <li><a href="https://edition.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk" target="_blank" rel="noopener">Arup, fraude deepfake de 25 MDD</a> <small>· CNN</small></li>
+      <li><a href="https://egaceta.scjn.gob.mx/detalle/tesis/2031640" target="_blank" rel="noopener">Jurisprudencia de las 4 reglas</a> <small>· Gaceta del SJF</small></li>
+      <li><a href="https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp" target="_blank" rel="noopener">Tipo de cambio FIX, 30 oct 2026: $18.7962</a> <small>· Banxico</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- RETO 4 -->
+<section class="s reto" id="reto4" style="--c:var(--purple)">
+  <div class="wrap">
+    <div class="reto-head rv"><span class="pill">RETO 04</span><h2 style="margin:0">Tu identidad en una base de datos</h2>
+      <div class="tracker"><span>1</span><span>2</span><span>3</span><span class="on">4</span><span>5</span></div></div>
+    <div class="chips rv"><span class="chip">TI</span><span class="chip">Logística</span><span class="chip">Financiera</span></div>
+    <div class="q rv"><span class="tag">PREGUNTA //</span><p>CURP biométrica: tu foto y tus huellas en un registro nacional. Si se filtra, ¿quién responde?</p></div>
+    <p class="remate rv">Tu cara y tus huellas ya son tu identidad oficial.</p>
+    <p class="rv" style="color:#CDD3DF">La CURP con huellas dactilares y fotografía es el documento nacional de identificación obligatorio.</p>
+    <div class="quote rv"><span class="ley">Ley General de Población, art. 91 Bis (DOF 16 jul 2025)</span>La integración de los datos biométricos se realizará, <mark>previo consentimiento de las personas titulares</mark>.</div>
+
+    <h3 class="rv" style="margin-top:32px;color:var(--c)">PARA TU CARRERA //</h3>
+    <div class="carrera">
+      <div class="card ap rv"><h3>APLÍCALO</h3><ul class="list">
+        <li>Pide solo los datos que de verdad necesitas.</li>
+        <li>Cifra los datos biométricos; nunca en texto plano.</li>
+        <li>Avisa para qué los usas y pide consentimiento.</li>
+        <li>Ten un plan para cuando haya una filtración.</li></ul></div>
+      <div class="card pr rv"><h3>PROFUNDIZA EN</h3><ul class="list">
+        <li>Privacidad desde el diseño</li><li>Cifrado y ciberseguridad</li><li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (2025)</li></ul></div>
+    </div>
+    <p class="remate rv" style="color:var(--c)">Quien diseña el sistema decide qué tan seguros están los datos de millones.</p>
+
+    <details class="fuentes rv"><summary>Fuentes del Reto 04</summary><ul>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/ref/lgp/LGP_ref20_16jul25.pdf" target="_blank" rel="noopener">Reforma a la Ley General de Población, art. 91 Bis (DOF 16 jul 2025)</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" rel="noopener">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</a> <small>· Cámara de Diputados</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- RETO 5 -->
+<section class="s reto" id="reto5" style="--c:var(--orange)">
+  <div class="wrap">
+    <div class="reto-head rv"><span class="pill">RETO 05</span><h2 style="margin:0">Hackear lo físico</h2>
+      <div class="tracker"><span>1</span><span>2</span><span>3</span><span>4</span><span class="on">5</span></div></div>
+    <div class="chips rv"><span class="chip">Mecatrónica</span><span class="chip">Automotrices</span><span class="chip">Energía</span><span class="chip">Alimentos</span><span class="chip">Logística</span></div>
+
+    <div class="card rv" style="--c:var(--red)"><div class="big">1.4 M</div><p>vehículos llamados a revisión en 2015, después de que investigadores tomaron el control remoto de un Jeep Cherokee en plena carretera.</p></div>
+
+    <h3 class="rv" style="margin-top:28px">Le puede pasar a cualquier industria</h3>
+    <div class="grid g3">
+      <div class="card rv" style="--c:var(--yellow)"><span class="k" style="color:var(--yellow)">⚡ Energía</span><div class="big" style="font-size:40px;margin:8px 0">225 mil</div><p><b>clientes sin luz.</b> Ucrania, 2015: ciberataque a la red eléctrica.</p></div>
+      <div class="card rv" style="--c:var(--red)"><span class="k" style="color:var(--red)">🏭 Alimentos</span><div class="big" style="font-size:40px;margin:8px 0">11 MDD</div><p><b>de rescate</b> (≈ 207 millones de pesos). JBS, 2021: ransomware.</p></div>
+      <div class="card rv" style="--c:var(--blue)"><span class="k" style="color:var(--blue)">🚢 Logística</span><div class="big" style="font-size:40px;margin:8px 0">300 MDD</div><p><b>en pérdidas</b> (≈ 5,639 millones de pesos). Maersk, 2017: ataque NotPetya.</p></div>
+    </div>
+
+    <div class="q rv"><span class="tag">PREGUNTA //</span><p>¿Quién responde? ¿El fabricante, el programador, el usuario o el hacker?</p></div>
+    <div class="quote rv"><span class="ley">Código Civil Federal, art. 1913</span>Cuando una persona hace uso de mecanismos, instrumentos, aparatos (…) peligrosos por sí mismos (…) <mark>está obligada a responder del daño que cause, aunque no obre ilícitamente</mark>…</div>
+    <p class="remate rv">Aunque no hagas nada ilegal, respondes por lo que construyes.</p>
+
+    <h3 class="rv" style="margin-top:32px;color:var(--c)">PARA TU CARRERA //</h3>
+    <div class="carrera">
+      <div class="card ap rv"><h3>APLÍCALO</h3><ul class="list">
+        <li>Piensa desde el diseño cómo pueden atacar tu sistema.</li>
+        <li>Prevé actualizaciones de seguridad (así se corrigió el Jeep).</li>
+        <li>Separa los controles críticos de internet.</li>
+        <li>Documenta tus pruebas de seguridad: te protegen ante el art. 1913.</li></ul></div>
+      <div class="card pr rv"><h3>PROFUNDIZA EN</h3><ul class="list">
+        <li>Ciberseguridad industrial</li><li>Ciberseguridad automotriz (ISO/SAE 21434)</li><li>Responsabilidad civil en ingeniería</li></ul></div>
+    </div>
+
+    <details class="fuentes rv"><summary>Fuentes del Reto 05</summary><ul>
+      <li><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CCF.pdf" target="_blank" rel="noopener">Código Civil Federal, art. 1913</a> <small>· Cámara de Diputados</small></li>
+      <li><a href="https://www.darkreading.com/vulnerabilities---threats/chrysler-recalls-14-million-vehicles-after-jeep-hacking-demo-/d/d-id/1321463" target="_blank" rel="noopener">Chrysler llama a revisión 1.4 millones de vehículos</a> <small>· Dark Reading</small></li>
+      <li><a href="https://www.cfr.org/cyber-operations/compromise-of-a-power-grid-in-eastern-ukraine" target="_blank" rel="noopener">Ciberataque a la red eléctrica de Ucrania (2015)</a> <small>· Council on Foreign Relations</small></li>
+      <li><a href="https://www.npr.org/2021/06/09/1004964822/jbs-paid-an-11-million-ransom-to-cyberattackers" target="_blank" rel="noopener">JBS pagó 11 MDD de rescate</a> <small>· NPR</small></li>
+      <li><a href="https://www.cnbc.com/amp/2017/08/16/maersk-says-notpetya-cyberattack-could-cost-300-million.html" target="_blank" rel="noopener">Maersk y NotPetya, hasta 300 MDD</a> <small>· CNBC</small></li>
+      <li><a href="https://therecord.media/mexican-president-confirms-guacamaya-hack-targeting-regional-militaries/" target="_blank" rel="noopener">Guacamaya Leaks (2022)</a> <small>· The Record</small></li>
+      <li><a href="https://saemobilus.sae.org/standards/isosae21434-road-vehicles-cybersecurity-engineering" target="_blank" rel="noopener">ISO/SAE 21434, ciberseguridad automotriz</a> <small>· SAE</small></li>
+      <li><a href="https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp" target="_blank" rel="noopener">Tipo de cambio FIX, 30 oct 2026: $18.7962</a> <small>· Banxico</small></li>
+    </ul></details>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="s" id="cierre">
+  <div class="wrap">
+    <span class="tag rv">CONCLUSIÓN //</span>
+    <h2 class="rv">En los cinco retos, la tecnología <span style="color:var(--green)">funcionó perfecto.</span> Lo que falló fue la <span style="color:var(--red)">responsabilidad.</span></h2>
+
+    <h3 class="rv" style="margin-top:32px">Decálogo del ingeniero con conciencia jurídica</h3>
+    <ol class="dec" style="margin-top:14px">
+      <li class="rv">Pide consentimiento antes de usar una cara, una voz o un dato.</li>
+      <li class="rv">Documenta tu proceso creativo.</li>
+      <li class="rv">La IA asiste; tú decides.</li>
+      <li class="rv">Verifica antes de publicar.</li>
+      <li class="rv">Protege los datos como si fueran tuyos.</li>
+      <li class="rv">Diseña con seguridad desde el inicio.</li>
+      <li class="rv">Lee los términos de uso.</li>
+      <li class="rv">Etiqueta lo que hizo la IA.</li>
+      <li class="rv">Pregúntate quién puede salir dañado.</li>
+      <li class="rv">En la vida real no hay Ctrl + Z.</li>
+    </ol>
+
+    <div class="center" style="margin-top:56px">
+      <div class="keys rv"><span class="key">Ctrl</span><span class="mono" style="font-size:30px;color:var(--muted)">+</span><span class="key z">Z</span></div>
+      <h2 class="rv" style="color:var(--green)">Ctrl + Z no existe.</h2>
+      <p class="lead rv" style="margin:0 auto">Lo que publicas, programas o automatizas, se queda. Que sea algo de lo que te sientas orgulloso.</p>
+      <p class="remate rv" style="margin-top:36px">En Chiapas hay talento de clase mundial.<br><span style="color:var(--muted);font-weight:400;font-family:var(--sans);font-size:18px">La tecnología es el puente para demostrarlo.</span></p>
+      <p class="h404 rv" style="font-size:clamp(28px,6vw,48px);letter-spacing:0;margin-top:8px">Felices 15 años, UPTap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="s" id="contacto">
+  <div class="wrap">
+    <span class="tag rv">CONTACTO //</span>
+    <h2 class="rv">¿Preguntas? <span style="color:var(--red);font-size:.55em;display:block;margin-top:6px">Error 404: preguntas no encontradas… todavía.</span></h2>
+    <p class="lead rv"><b>Carlos Eduardo Velázquez Ramírez</b> · Jefe del Departamento de Análisis y Desarrollo de Sistemas, Agencia Digital Tecnológica del Estado de Chiapas.</p>
+    <div class="contacto">
+      <a class="wa rv" href="https://wa.me/529611355778?text=Hola%20Eduardo%2C%20vi%20tu%20conferencia%20Error%20404%20en%20la%20UPTap." target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg></span>
+        <span><b>961 135 5778</b><small>Escríbeme por WhatsApp</small></span></a>
+      <a class="ml rv" href="mailto:eduardovz@aditech.chiapas.gob.mx?subject=Conferencia%20Error%20404%20-%20UPTap">
+        <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4 7.5V17h16V7.5l-8 4.7Zm7.2-5.2H4.8L12 10.2 19.2 7Z"/></svg></span>
+        <span><b style="font-size:15px;word-break:break-all">eduardovz@aditech.chiapas.gob.mx</b><small>Envíame un correo</small></span></a>
+    </div>
+    <p class="note rv" style="margin-top:20px">Este sitio no usa cookies, formularios ni rastreadores: no recaba datos personales de quien lo visita.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logos">
+      <img class="ad" src="data:image/png;base64,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" alt="Agencia Digital Tecnológica del Estado de Chiapas">
+      <img class="sa" src="data:image/png;base64,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" alt="SATA">
+    </div>
+    <span>Agencia Digital Tecnológica del Estado de Chiapas · Semillero de Aplicaciones y Tecnologías de la Agencia (SATA)<br>Conferencia magistral · Universidad Politécnica de Tapachula · 3 de noviembre de 2026</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/529611355778?text=Hola%20Eduardo%2C%20vi%20tu%20conferencia%20Error%20404%20en%20la%20UPTap." target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+  <span>¿Dudas? Escríbeme</span></a>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+  var bar=document.getElementById('progreso'), links=document.querySelectorAll('nav.retos a'), secs=[];
+  links.forEach(function(a){var s=document.querySelector(a.getAttribute('href')); if(s) secs.push([s,a]);});
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+    var cur=null; secs.forEach(function(p){if(p[0].getBoundingClientRect().top<120) cur=p[1];});
+    links.forEach(function(a){a.classList.toggle('on',a===cur);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>
